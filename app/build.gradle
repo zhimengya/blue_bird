@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "cn.kgc.tiku.bluebird"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        packagingOptions {
+            exclude 'META-INF/NOTICE' // will not include NOTICE file
+            exclude 'META-INF/LICENSE' // will not include LICENSE file
+            // as noted by @Vishnuvathsan you may also need to include
+            // variations on the file name. It depends on your dependencies.
+            // Some other common variations on notice and license file names
+            exclude 'META-INF/notice'
+            exclude 'META-INF/notice.txt'
+            exclude 'META-INF/license'
+            exclude 'META-INF/license.txt'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    api 'com.android.support:appcompat-v7:25.3.1'
+    api 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    testImplementation 'junit:junit:4.12'
+    api files('libs/fastjson-1.2.44.jar')
+    api 'com.squareup.okhttp3:okhttp:3.6.0'
+    api 'com.squareup.okio:okio:1.11.0'
+}
+android {
+    //useLibrary 'org.apache.http.legacy'
+}
