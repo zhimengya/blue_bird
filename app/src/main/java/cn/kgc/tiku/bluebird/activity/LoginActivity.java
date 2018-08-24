@@ -218,12 +218,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(config.getAlipay()!=null||!config.getAlipay().trim().equals("")){
-                    if (ActivityUtils.checkApkExist(getApplicationContext(), "com.eg.android.AlipayGphone")) {
-                        //这个无法更换，因为已启动就要启动支付宝
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                                .parse(config.getAlipay())));
-                    }
+                if (config.getAlipay() != null || !config.getAlipay().trim().equals("")) {
                 }
 
                 if (config.getVersion() != Contant.VERSION) {

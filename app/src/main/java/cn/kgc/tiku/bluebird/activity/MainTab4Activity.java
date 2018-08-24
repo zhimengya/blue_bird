@@ -126,12 +126,6 @@ public class MainTab4Activity extends BasicActivity {
         btnHongBao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ActivityUtils.checkApkExist(getApplicationContext(), "com.eg.android.AlipayGphone")) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                            .parse(Contant.config.getAlipay())));
-                } else {
-                    ActivityUtils.showAlertMainThread(MainTab4Activity.this, Contant.SYS_INFO_TITLE, "尚未安装支付宝，无法获取红包。", null);
-                }
             }
         });
     }
