@@ -3,7 +3,6 @@ package cn.kgc.tiku.bluebird.utils;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -81,15 +80,6 @@ public final class HttpUtils {
                 .build();
     }
 
-    //第一次验证登录
-//    public static UserInfo verificationLogin(String userName, String password,Callback callback) throws IOException {
-//        try {
-//            HTTP_CLIENT.newCall(createReqeust(getVerificationUrl(userName, password))).enqueue(callback);
-//        } catch (IOException e) {
-//            throw new IOException("验证登陆失败");
-//        }
-//    }
-
 
     public static String getLoginUrl(String username, String password) {
         String passUserPassword = "";
@@ -111,32 +101,18 @@ public final class HttpUtils {
         private ArrayList<Parameter> mParameters;
 
         public String getAuthCnParam() {
-            Collections.sort(this.mParameters, new SortByKey());
-            String auth = addslashes() + "cn_bdqn";
-            try {
-                auth = Md5Utils.md5Encode(auth);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return auth;
+            //涉及免验证码登陆，相关代码已删除
+            return "";
         }
 
         public String addslashes() {
-            String url = "";
-            for (int i = 0; i < this.mParameters.size(); i++) {
-                Parameter parameter = (Parameter) this.mParameters.get(i);
-                if (parameter != null) {
-                    url = url + parameter.getKey() + "=" + parameter.getValue() + "&";
-                }
-            }
-            return url.substring(0, url.length() - 1);
+            //涉及免验证码登陆，相关代码已删除
+            return "";
         }
 
         public String getQuestionUrl(String pathUrl) {
-            Collections.sort(this.mParameters, new SortByKey());
-            String url = addslashes();
-            pathUrl = pathUrl + "?" + url;
-            return pathUrl;
+            //涉及免验证码登陆，相关代码已删除
+            return "";
         }
 
         public void addParam(String key, String value) {
@@ -179,14 +155,7 @@ public final class HttpUtils {
         }
 
         public int compare(Object o1, Object o2) {
-            Parameter s1 = (Parameter) o1;
-            Parameter s2 = (Parameter) o2;
-            if (s1.getKey().compareTo(s2.getKey()) < 0) {
-                return -1;
-            }
-            if (s1.getKey().compareTo(s2.getKey()) > 0) {
-                return 1;
-            }
+
             return 0;
         }
     }
