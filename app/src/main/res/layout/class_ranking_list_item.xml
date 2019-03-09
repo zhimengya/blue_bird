@@ -1,73 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
+            android:gravity="center" android:padding="10dp" android:layout_width="match_parent"
+            android:layout_height="100dp">
         <TextView
-            android:id="@+id/mc"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxEms="6"
-            android:maxLines="1"
-            android:text="1"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/xm"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxEms="6"
-            android:maxLines="1"
-            android:text="star"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/ljdt"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxEms="6"
-            android:maxLines="1"
-            android:text="1300"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/sjdt"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxEms="6"
-            android:maxLines="1"
-            android:text="0"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/zql"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxEms="6"
-            android:maxLines="1"
-            android:text="0.8115"
-            android:textAlignment="center" />
+                android:id="@+id/index"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_weight="2" android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" android:layout_weight="10" android:orientation="vertical"
+        >
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="40dp">
+                <TextView
+                        android:id="@+id/userName"
+                        android:gravity="center"
+                        android:textSize="20dp" android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="userName"/>
+                <TextView android:id="@+id/percentage" android:gravity="center" android:layout_marginLeft="10dp"
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:text="100%"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="40dp">
+                <TextView android:id="@+id/answerNo" android:gravity="center" android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:text="累计答题 0"/>
+                <TextView
+                        android:id="@+id/actualQuestionNoNow"
+                        android:layout_marginLeft="10dp" android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="实际答题 0"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
