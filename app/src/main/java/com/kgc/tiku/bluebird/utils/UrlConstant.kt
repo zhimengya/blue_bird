@@ -5,19 +5,19 @@ import okhttp3.Request
 import java.net.URLDecoder
 import java.util.*
 
+
 class UrlConstant private constructor() {
     companion object {
         private const val TOW_LOGIN_URL = "http://tiku.kgc.cn/testing/exam/app/login"
         private const val ONE_LOGIN_URL = "http://a.bdqn.cn/pb/pbsub/web/login/user_login.action"
-        private const val CHANGE_PRODUCT_URL =
-            "http://a.bdqn.cn/pb/pbsub/web/qingqing/product_change.action?clientType=009&productId=%d&userId=%d"
+        private const val CHANGE_PRODUCT_URL = "http://a.bdqn.cn/pb/pbsub/web/qingqing/product_change.action?clientType=009&productId=%d&userId=%d"
         private const val NOW_WEEK_RANKING_URL = "http://tiku.kgc.cn/testing/exam/app/classRanking?monthOrWeek=nowWeek"
         private const val EXAM_URL = "http://tiku.kgc.cn/testing/exam/app/unified/classExam"
         private const val UNIFIED_EXAM_URL = "http://tiku.kgc.cn/testing/exam/app/unified/exam"
         private const val SUBMIT_UNIFIED_EXAM_URL = "http://tiku.kgc.cn/testing/exam/app/unified/answerAll"
         private const val SAVE_UNIFIED_EXAM_RESULT =
             "http://tiku.kgc.cn/testing/exam/app/unified/submitExam?submitWay=1"
-        const val CHECK_URL = "https://gitee.com/starxg/bl/raw/master/switch"
+            const val CHECK_URL = "https://gitee.com/starxg/bl/raw/master/switch"
         /**
          * 获取第二次登陆地址
          */
@@ -60,10 +60,10 @@ class UrlConstant private constructor() {
         /**
          * 获取考试答案
          */
-        fun getAnalysisTestPaper(paperId: Long): String {
+        fun getAnalysisTestPaper(paperId: Long,examResultId:Long): String {
             val parameterUtils = UrlConstant.ParameterUtils()
             parameterUtils.addParam("paperId", paperId.toString())
-            parameterUtils.addParam("examResultId", "0")
+            parameterUtils.addParam("examResultId", examResultId.toString())
             parameterUtils.addParam("_yl005_", parameterUtils.getAuthCnParam(false))
             return parameterUtils.getQuestionUrl("http://tiku.kgc.cn/testing/kgc/app/paper/solutions")!!
         }
@@ -82,7 +82,9 @@ class UrlConstant private constructor() {
             val parameterUtils = UrlConstant.ParameterUtils()
             parameterUtils.addParam("unifiedId", unifiedId.toString())
             parameterUtils.addParam("_yl005_", parameterUtils.getAuthCnParam(false))
+
             return parameterUtils.getQuestionUrl(UNIFIED_EXAM_URL)!!
+
         }
 
         /**
@@ -92,6 +94,7 @@ class UrlConstant private constructor() {
             Log.i("Test2", json)
             val parameterUtils = UrlConstant.ParameterUtils()
             parameterUtils.addParam("examResultId", examResultId.toString())
+
             parameterUtils.addParam("json", json)
             parameterUtils.addParam("unifiedId", unifiedId.toString())
             parameterUtils.addParam("_yl005_", parameterUtils.getAuthCnParam(false))
@@ -145,6 +148,7 @@ class UrlConstant private constructor() {
                 if (url.isNotEmpty()) {
                     mUrl = "$mUrl?$url"
                 }
+
                 return mUrl
             }
             return null

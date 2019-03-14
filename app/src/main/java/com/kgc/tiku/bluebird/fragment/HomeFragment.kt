@@ -176,9 +176,13 @@ class HomeFragment : BaseFragment() {
                 log("正在执行第 $i/5 次")
                 //获取试卷
                 val paper = getPaper() ?: continue
+
                 val paperId = paper.getJSONObject("paper").getLongValue("id")
+                val examResultId = paper.getLongValue("examResultId")
+
                 //获取答案
-                val answers = getAnswer(paperId) ?: continue
+
+                val answers = getAnswer(paperId,examResultId) ?: continue
                 val subResult = submitPaper(paperId, answers)
                 if (!subResult) continue
                 //保存试卷
@@ -210,8 +214,10 @@ class HomeFragment : BaseFragment() {
      */
     private fun getPaper(): JSONObject? {
         val response = HttpUtils.okHttpClient().newCall(HttpUtils.buildGet(gradeItem!!.itemUrl)).execute()
+
         if (response.isSuccessful) {
             val json = JSON.parseObject(response.body().string())
+
             if (json.getIntValue("code") != 1) {
                 log("获取题目失败，可能已在它处登录")
                 return null
@@ -287,8 +293,9 @@ class HomeFragment : BaseFragment() {
     /**
      * 获取答案
      */
-    private fun getAnswer(paperId: Long): JSONArray? {
-        val buildGet = HttpUtils.buildGet(UrlConstant.getAnalysisTestPaper(paperId))
+    private fun getAnswer(paperId: Long,examResultId:Long): JSONArray? {
+        val buildGet = HttpUtils.buildGet(UrlConstant.getAnalysisTestPaper(paperId,examResultId))
+
         val response = HttpUtils.okHttpClient().newCall(buildGet).execute()
         if (response.isSuccessful) {
             val json = JSON.parseObject(response.body().string())

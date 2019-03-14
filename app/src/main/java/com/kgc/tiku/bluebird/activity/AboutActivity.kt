@@ -49,6 +49,8 @@ class AboutActivity : AppCompatActivity() {
                 jump("mqqwpa://im/chat?chat_type=wpa&uin=82658186")
             }.addItemView(mAboutGroupListView?.createItemView("无理")) {
                 jump("mqqwpa://im/chat?chat_type=wpa&uin=1664205893")
+            }.addItemView(mAboutGroupListView?.createItemView("Belief-Life")) {
+                jump("mqqwpa://im/chat?chat_type=wpa&uin=55205486")
             }
             .addTo(mAboutGroupListView)
         mCopyrightTextView?.text = "望君适可而止"

@@ -245,9 +245,10 @@ class ExamFragment : BaseFragment() {
                 //获取题目
                 val cqList = JSON.parseArray(DesUtils.decrypt(paper.getString("cqList")))
                 val paperId = paper.getJSONObject("paper").getLongValue("id")
+                val examResultIdtxt = paper.getLongValue("examResultId")
                 //获取答案
                 val answerRequest =
-                    HttpUtils.buildGet(UrlConstant.getAnalysisTestPaper(paperId))
+                    HttpUtils.buildGet(UrlConstant.getAnalysisTestPaper(paperId,examResultIdtxt))
                 val answerResponse = HttpUtils.okHttpClient().newCall(answerRequest).execute()
                 if (!answerResponse.isSuccessful) {
                     onFailure(null, IOException("获取考试答案失败"))
